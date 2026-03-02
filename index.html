@@ -146,6 +146,21 @@
   background: var(--lime);
   animation: onlineBlink 1.4s ease-in-out infinite;
 }
+    .mood-dot{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  margin-left:6px;
+  border-radius:2px;
+  background: var(--pink);
+  box-shadow: 0 0 8px rgba(255,77,154,.6);
+  animation: moodPulse 2s ease-in-out infinite;
+}
+
+@keyframes moodPulse{
+  0%,100%{ opacity:1; }
+  50%{ opacity:.5; }
+}
     .cta{
       margin-left:auto;
       display:flex;
@@ -458,7 +473,10 @@
         </div>
         <div class="status">
           <div><b>Status:</b> updating my portfolio & coding</div>
-          <div><b>Mood:</b> caffeinated</div>
+         <div>
+  <b>Mood:</b> caffeinated 
+  <span class="mood-dot"></span>
+</div>
         </div>
       </div>
 
@@ -466,7 +484,8 @@
         <div class="pill"><span class="dot"></span>online</div>
         <div class="pill">Top skill: Figma + web production</div>
         <div class="pill">Based in: St. Louis</div>
-
+        <div class="pill">Profile Views: 14,814</div>
+        <div class="pill">Now Playing – Misery Business – Paramore</div>
         <div class="cta">
           <a class="btn" href="#projects">View Work</a>
           <a class="btn secondary" href="https://github.com/bryant90s" target="_blank" rel="noreferrer">GitHub</a>
