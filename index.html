@@ -430,9 +430,16 @@
       font-size: 12px;
       opacity:.9;
     }
-/* Classic Windows cursor normal size */
+/* Funky old-school white hand cursor */
 body {
-  cursor: url("./assets/cursor.png") 2 2, auto;
+  cursor: url("data:image/svg+xml;utf8,
+  <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'>
+    <path d='M10 18 L10 10 Q10 8 12 8 Q14 8 14 10 L14 16
+             L16 8 Q16 6 18 6 Q20 6 20 8 L20 16
+             L22 9 Q22 7 24 7 Q26 7 26 9 L26 20
+             Q26 24 22 26 L16 28 L10 22 Z'
+          fill='white' stroke='black' stroke-width='2'/>
+  </svg>") 12 6, auto;
 }
 
 a,
