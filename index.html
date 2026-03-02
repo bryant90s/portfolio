@@ -250,7 +250,6 @@
     /* Top 8 tiles are links */
     .friend{
       display:block;
-      cursor:pointer;
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 12px;
       background: rgba(0,0,0,.22);
@@ -430,18 +429,40 @@
       font-size: 12px;
       opacity:.9;
     }
-/* Funky old-school white hand cursor (Chrome-safe: single line SVG) */
-body {
-  cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2732%27%20height%3D%2732%27%20viewBox%3D%270%200%2032%2032%27%3E%3Cpath%20d%3D%27M10%2018%20L10%2010%20Q10%208%2012%208%20Q14%208%2014%2010%20L14%2016%20L16%208%20Q16%206%2018%206%20Q20%206%2020%208%20L20%2016%20L22%209%20Q22%207%2024%207%20Q26%207%2026%209%20L26%2020%20Q26%2024%2022%2026%20L16%2028%20L10%2022%20Z%27%20fill%3D%27white%27%20stroke%3D%27black%27%20stroke-width%3D%272%27/%3E%3C/svg%3E") 12 6, auto;
-}
 
-a,
-button,
-.btn,
-.friend,
-.live {
-  cursor: pointer;
-}
+    /* ========= Animated Hourglass "Cursor" =========
+       Real cursors cannot be animated reliably in Chrome.
+       This hides the cursor and draws an animated hourglass that follows the mouse.
+    */
+    html, body { cursor: none; }
+
+    #hgCursor{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      pointer-events: none;
+      z-index: 999999;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.55));
+    }
+
+    #hgCursor svg{
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    #hgFlip{
+      transform-origin: 50% 50%;
+      animation: hgflip 1s steps(2, end) infinite;
+    }
+
+    @keyframes hgflip{
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(180deg); }
+    }
   </style>
 </head>
 <body>
@@ -765,8 +786,43 @@ button,
 
   </div>
 
+  <!-- Fake hourglass cursor element -->
+  <div id="hgCursor" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <g id="hgFlip">
+        <path d="M7 3h10M7 21h10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8 5h8c0 3-2 4-4 6c2 2 4 3 4 6H8c0-3 2-4 4-6c-2-2-4-3-4-6Z"
+              fill="white" stroke="black" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M10 8h4c0 1-1 1.5-2 2c-1-.5-2-1-2-2Z" fill="black" opacity=".55"/>
+        <path d="M10 16h4c0-1-1-1.5-2-2c-1 .5-2 1-2 2Z" fill="black" opacity=".25"/>
+        <path d="M12 11v2" stroke="black" stroke-width="1" opacity=".45" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+
   <script>
+    // year
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // fake cursor follow
+    const hg = document.getElementById("hgCursor");
+    let mx = 0, my = 0, x = 0, y = 0;
+
+    window.addEventListener("mousemove", (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+    });
+
+    function tick(){
+      x += (mx - x) * 0.35;
+      y += (my - y) * 0.35;
+      hg.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    window.addEventListener("mouseleave", () => hg.style.display = "none");
+    window.addEventListener("mouseenter", () => hg.style.display = "block");
   </script>
 </body>
 </html>
