@@ -13,6 +13,7 @@
       --stroke:rgba(255,255,255,.12);
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.65);
+      --muted2:rgba(255,255,255,.50); /* added */
       --pink:#ff4d9a;
       --cyan:#43f7ff;
       --lime:#7CFF6B;
@@ -245,7 +246,11 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
     }
+
+    /* Top 8 tiles are now <a class="friend"> ... </a> */
     .friend{
+      display:block;              /* important */
+      cursor:pointer;             /* important */
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 12px;
       background: rgba(0,0,0,.22);
@@ -253,6 +258,16 @@
       text-align:center;
       font-size: 11px;
       color: var(--muted);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .friend:hover{
+      text-decoration:none;       /* kill underline on hover */
+      border-color: rgba(255,255,255,.18);
+      background: rgba(0,0,0,.30);
+      transform: translateY(-1px);
+    }
+    .friend:active{
+      transform: translateY(0px);
     }
     .friend .mini{
       width:100%;
@@ -400,7 +415,7 @@
         <a href="#projects">portfolio</a>
         <a href="#top8">top 8</a>
         <a href="#comments">comments</a>
-        <a href="mailto:bryantredd@gmail.com">message me</a>
+        <a href="mailto:bryantredd@gmail.com?subject=Portfolio%20Inquiry%20-%20Bryant%20Redd">message me</a>
       </div>
     </div>
 
@@ -452,15 +467,39 @@
           <h2>Top 8 (Projects)</h2>
           <div class="content">
             <div class="top8">
-              <div class="friend"><div class="mini"></div><b>Sentinel</b>AI SaaS</div>
-              <div class="friend"><div class="mini"></div><b>Orbital</b>Infra</div>
-              <div class="friend"><div class="mini"></div><b>Spot</b>Marketing</div>
-              <div class="friend"><div class="mini"></div><b>Hush</b>ROI</div>
-              <div class="friend"><div class="mini"></div><b>Verdict</b>Legal</div>
-              <div class="friend"><div class="mini"></div><b>Obsidian</b>Fashion</div>
-              <div class="friend"><div class="mini"></div><b>Project 7</b>WIP</div>
-              <div class="friend"><div class="mini"></div><b>Project 8</b>WIP</div>
+              <a class="friend" href="https://sentinel-gold-eta.vercel.app/" target="_blank" rel="noreferrer">
+                <div class="mini"></div><b>Sentinel</b>AI SaaS
+              </a>
+
+              <a class="friend" href="https://orbital-xi.vercel.app/" target="_blank" rel="noreferrer">
+                <div class="mini"></div><b>Orbital</b>Infra
+              </a>
+
+              <a class="friend" href="https://spot-hopper.vercel.app/" target="_blank" rel="noreferrer">
+                <div class="mini"></div><b>Spot</b>Marketing
+              </a>
+
+              <a class="friend" href="https://hush-index.vercel.app/" target="_blank" rel="noreferrer">
+                <div class="mini"></div><b>Hush</b>ROI
+              </a>
+
+              <a class="friend" href="https://verdict-two.vercel.app/" target="_blank" rel="noreferrer">
+                <div class="mini"></div><b>Verdict</b>Legal
+              </a>
+
+              <a class="friend" href="https://obsidian-house-kappa.vercel.app/" target="_blank" rel="noreferrer">
+                <div class="mini"></div><b>Obsidian</b>Fashion
+              </a>
+
+              <a class="friend" href="#projects">
+                <div class="mini"></div><b>Project 7</b>WIP
+              </a>
+
+              <a class="friend" href="#projects">
+                <div class="mini"></div><b>Project 8</b>WIP
+              </a>
             </div>
+
             <p style="margin:10px 0 0; font-size:12px; color:var(--muted);">
               Replace these with your favorite 8. It’s just a vibe section, but it lands.
             </p>
@@ -472,7 +511,7 @@
           <div class="content" style="display:grid; gap:8px;">
             <a href="mailto:bryantredd@gmail.com">Email</a>
             <a href="https://github.com/bryant90s" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/bryant-r-b78b08b7/" target="_blank" rel="noreferrer">LinkedIn</a>
             <a href="#projects">Projects</a>
           </div>
         </section>
@@ -483,7 +522,6 @@
         <h2>Bryant’s Space</h2>
         <div class="projects">
 
-          <!-- CARD 1 -->
           <article class="card">
             <h3>Sentinel, Enterprise AI Cybersecurity</h3>
             <div class="meta">
@@ -500,7 +538,6 @@
             </div>
           </article>
 
-          <!-- CARD 2 -->
           <article class="card">
             <h3>Orbital, Infrastructure Platform</h3>
             <div class="meta">
@@ -517,7 +554,6 @@
             </div>
           </article>
 
-          <!-- CARD 3 -->
           <article class="card">
             <h3>Restaurant Growth SaaS Marketing</h3>
             <div class="meta">
@@ -534,7 +570,6 @@
             </div>
           </article>
 
-          <!-- CARD 4 -->
           <article class="card">
             <h3>Unified Marketing + Retention</h3>
             <div class="meta">
@@ -551,7 +586,6 @@
             </div>
           </article>
 
-          <!-- CARD 5 -->
           <article class="card">
             <h3>VERDICT, Litigation Intelligence</h3>
             <div class="meta">
@@ -568,7 +602,6 @@
             </div>
           </article>
 
-          <!-- CARD 6 -->
           <article class="card">
             <h3>Obsidian House, Digital Atelier</h3>
             <div class="meta">
@@ -596,7 +629,7 @@
             </div>
           </div>
           <div class="comment">
-            <div class="ico">S</div>
+            <div class="ico">A</div>
             <div>
               <b>Amy</b> <span style="color:var(--muted);">left a comment</span>
               <p>“Ok but why does this make me want to click every project.”</p>
