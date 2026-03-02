@@ -13,7 +13,7 @@
       --stroke:rgba(255,255,255,.12);
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.65);
-      --muted2:rgba(255,255,255,.50); /* added */
+      --muted2:rgba(255,255,255,.50);
       --pink:#ff4d9a;
       --cyan:#43f7ff;
       --lime:#7CFF6B;
@@ -247,10 +247,10 @@
       gap: 8px;
     }
 
-    /* Top 8 tiles are now <a class="friend"> ... </a> */
+    /* Top 8 tiles are links */
     .friend{
-      display:block;              /* important */
-      cursor:pointer;             /* important */
+      display:block;
+      cursor:pointer;
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 12px;
       background: rgba(0,0,0,.22);
@@ -261,14 +261,13 @@
       transition: transform .15s ease, border-color .15s ease, background .15s ease;
     }
     .friend:hover{
-      text-decoration:none;       /* kill underline on hover */
+      text-decoration:none;
       border-color: rgba(255,255,255,.18);
       background: rgba(0,0,0,.30);
       transform: translateY(-1px);
     }
-    .friend:active{
-      transform: translateY(0px);
-    }
+    .friend:active{ transform: translateY(0px); }
+
     .friend .mini{
       width:100%;
       aspect-ratio: 1 / 1;
@@ -278,7 +277,34 @@
       background:
         radial-gradient(circle at 35% 35%, rgba(255,255,255,.22), transparent 55%),
         linear-gradient(180deg, rgba(255,211,107,.22), rgba(67,247,255,.12));
+      position: relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
+
+    /* MySpace-ish silhouette icon */
+    .friend .silhouette{
+      width: 26px;
+      height: 26px;
+      position:absolute;
+      right: 8px;
+      top: 8px;
+      opacity: .9;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,.6));
+      fill: rgba(255,255,255,.72);
+    }
+
+    /* Tiny “two-person” feel with a second faded silhouette */
+    .friend .silhouette.two{
+      right: 18px;
+      top: 14px;
+      opacity: .35;
+      transform: scale(.92);
+      fill: rgba(255,255,255,.55);
+    }
+
     .friend b{ display:block; color: var(--text); font-weight:700; margin-bottom:2px; }
 
     /* Right column - projects */
@@ -468,35 +494,115 @@
           <div class="content">
             <div class="top8">
               <a class="friend" href="https://sentinel-gold-eta.vercel.app/" target="_blank" rel="noreferrer">
-                <div class="mini"></div><b>Sentinel</b>AI SaaS
+                <div class="mini">
+                  <svg class="silhouette two" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                  <svg class="silhouette" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                </div>
+                <b>Sentinel</b>AI SaaS
               </a>
 
               <a class="friend" href="https://orbital-xi.vercel.app/" target="_blank" rel="noreferrer">
-                <div class="mini"></div><b>Orbital</b>Infra
+                <div class="mini">
+                  <svg class="silhouette two" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                  <svg class="silhouette" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                </div>
+                <b>Orbital</b>Infra
               </a>
 
               <a class="friend" href="https://spot-hopper.vercel.app/" target="_blank" rel="noreferrer">
-                <div class="mini"></div><b>Spot</b>Marketing
+                <div class="mini">
+                  <svg class="silhouette two" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                  <svg class="silhouette" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                </div>
+                <b>Spot</b>Marketing
               </a>
 
               <a class="friend" href="https://hush-index.vercel.app/" target="_blank" rel="noreferrer">
-                <div class="mini"></div><b>Hush</b>ROI
+                <div class="mini">
+                  <svg class="silhouette two" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                  <svg class="silhouette" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                </div>
+                <b>Hush</b>ROI
               </a>
 
               <a class="friend" href="https://verdict-two.vercel.app/" target="_blank" rel="noreferrer">
-                <div class="mini"></div><b>Verdict</b>Legal
+                <div class="mini">
+                  <svg class="silhouette two" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                  <svg class="silhouette" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                </div>
+                <b>Verdict</b>Legal
               </a>
 
               <a class="friend" href="https://obsidian-house-kappa.vercel.app/" target="_blank" rel="noreferrer">
-                <div class="mini"></div><b>Obsidian</b>Fashion
+                <div class="mini">
+                  <svg class="silhouette two" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                  <svg class="silhouette" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                </div>
+                <b>Obsidian</b>Fashion
               </a>
 
               <a class="friend" href="#projects">
-                <div class="mini"></div><b>Project 7</b>WIP
+                <div class="mini">
+                  <svg class="silhouette two" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                  <svg class="silhouette" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                </div>
+                <b>Project 7</b>WIP
               </a>
 
               <a class="friend" href="#projects">
-                <div class="mini"></div><b>Project 8</b>WIP
+                <div class="mini">
+                  <svg class="silhouette two" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                  <svg class="silhouette" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 4-7 8-7s8 3 8 7"></path>
+                  </svg>
+                </div>
+                <b>Project 8</b>WIP
               </a>
             </div>
 
