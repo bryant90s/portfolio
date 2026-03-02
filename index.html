@@ -429,40 +429,6 @@
       font-size: 12px;
       opacity:.9;
     }
-
-    /* ========= Animated Hourglass "Cursor" =========
-       Real cursors cannot be animated reliably in Chrome.
-       This hides the cursor and draws an animated hourglass that follows the mouse.
-    */
-    html, body { cursor: none; }
-
-    #hgCursor{
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 22px;
-      height: 22px;
-      pointer-events: none;
-      z-index: 999999;
-      transform: translate(-50%, -50%);
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,.55));
-    }
-
-    #hgCursor svg{
-      width: 22px;
-      height: 22px;
-      display: block;
-    }
-
-    #hgFlip{
-      transform-origin: 50% 50%;
-      animation: hgflip 1s steps(2, end) infinite;
-    }
-
-    @keyframes hgflip{
-      0%   { transform: rotate(0deg); }
-      100% { transform: rotate(180deg); }
-    }
   </style>
 </head>
 <body>
