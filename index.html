@@ -461,6 +461,31 @@ body{
       font-size: 12px;
       opacity:.9;
     }
+    .now-playing{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.mini-player{
+  width:22px;
+  height:22px;
+  border-radius:6px;
+  border:1px solid rgba(255,255,255,.15);
+  background: linear-gradient(180deg, rgba(0,110,255,.25), rgba(0,110,255,.10));
+  color: white;
+  font-size:11px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition: all .15s ease;
+}
+
+.mini-player:hover{
+  background: linear-gradient(180deg, rgba(0,140,255,.35), rgba(0,140,255,.15));
+}
   </style>
 </head>
 <body>
@@ -496,7 +521,14 @@ body{
         <div class="pill">Top skills: Figma + UI/UX</div>
         <div class="pill">Based in: St. Louis</div>
         <div class="pill">Profile Views: 14,814</div>
-        <div class="pill">Now Playing – The Black Parade - MCR</div>
+        <div class="pill now-playing">
+  <button class="mini-player" id="playBtn">▶</button>
+  <span>Now Playing – The Black Parade – MCR</span>
+</div>
+
+<audio id="audio">
+  <source src="black-parade.mp3" type="audio/mpeg">
+</audio>
         <div class="cta">
           <a class="btn" href="#projects">View Work</a>
           <a class="btn secondary" href="https://github.com/bryant90s" target="_blank" rel="noreferrer">GitHub</a>
@@ -822,5 +854,29 @@ body{
     <footer>
       © <span id="y"></span> Bryant Redd. Built as a one-file MySpace-style portfolio.
     </footer>
+<script>
+  const btn = document.getElementById("playBtn");
+  const audio = document.getElementById("audio");
 
+  if (btn && audio) {
+    btn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+        btn.textContent = "❚❚";
+      } else {
+        audio.pause();
+        btn.textContent = "▶";
+      }
+    });
+  }
+
+  // auto set footer year
+  const year = document.getElementById("y");
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+</script>
   </div>
+
+</body>
+</html>
