@@ -23,17 +23,28 @@
     }
 
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: Tahoma, Verdana, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 500px at 18% 8%, rgba(255,77,154,.22), transparent 60%),
-        radial-gradient(900px 500px at 80% 14%, rgba(67,247,255,.18), transparent 60%),
-        radial-gradient(900px 700px at 50% 120%, rgba(124,255,107,.10), transparent 60%),
-        var(--bg);
-    }
+   html, body { height: 100%; }
+
+body{
+  margin:0;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg); /* base only */
+  position: relative;
+}
+
+/* Fixed glow layer so it never “cuts off” at the bottom */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(900px 500px at 18% 8%, rgba(255,77,154,.22), transparent 60%),
+    radial-gradient(900px 500px at 80% 14%, rgba(63,247,255,.18), transparent 60%),
+    radial-gradient(900px 700px at 50% 120%, rgba(124,255,107,.10), transparent 60%);
 
     a{ color: var(--cyan); text-decoration:none; }
     a:hover{ text-decoration:underline; }
